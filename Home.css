@@ -86,5 +86,54 @@ text-decoration: none;
     color: grey;
 }
 .search-icon {
-    filter: invert(100%); color: black; /* Invert the colors (e.g., black to white, white to black) */
+    filter: invert(100%); color: black; 
   }
+
+  .fotoja1 {
+    width: 100vw;
+    height: 85vh; 
+    background-image: url('Nike.wallpaper2.jpg'); 
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed; 
+    background-size: auto 100%; 
+}
+p{
+    font-size: 20px;
+}
+
+.PjesaEprodukteve{
+    justify-content: space-between;
+    display: flex;
+    background-size: cover;
+    flex-wrap: wrap;
+    
+
+}
+.u1 {
+    flex: 0 1 calc(20% - 10px);
+    padding: 10px;
+    margin: 5px; 
+    display: flex;
+    flex-direction: column;
+    
+}
+.u1 img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    }
+
+.u2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.u2 p {
+    margin: 5px 0;
+}
+
+.u1{
+    
+        filter: brightness(80%) saturate(120%) hue-rotate(200deg);
+    } 
