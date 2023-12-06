@@ -137,3 +137,24 @@ p{
     
         filter: brightness(80%) saturate(120%) hue-rotate(200deg);
     } 
+    .free-shipping {
+        background-color: #f8f8f8; 
+        padding: 40px 0; 
+        text-align: center;
+    }
+    
+    .shipping-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .shipping-content img {
+        width: 150px; 
+        margin-bottom: 15px; 
+    }
+    
+    .shipping-content p {
+        font-size: 18px; 
+        font-weight: bold; 
+    }
