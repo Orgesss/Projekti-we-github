@@ -162,3 +162,59 @@ p{
         font-size: 18px; 
         font-weight: bold; 
     }
+    .footer {
+        background-color: #333; 
+        color: #fff; 
+        padding: 20px;
+
+    }
+    
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .footer-info,
+    .social-links {
+        flex: 1;
+        text-align: right;
+    }
+    
+    .social-links a {
+        margin: 0 10px; 
+    }
+    
+    .payment-methods {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .payment-logos img {
+        max-width: 80px; 
+        height: auto;
+    }
+    
+    
+    .social-links a img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    
+    .social-links a img[src="fb-logo.png"],
+    .social-links a img[src="ig-logo.png"] {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .sponsored-section .sponsor-logos img {
+        width: 100px; 
+        height: auto; 
+       
+    }
+    
+    .sponsor-logos img {
+        max-width: 100px; 
+        margin-right: 20px; 
+    }
