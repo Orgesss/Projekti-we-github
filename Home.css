@@ -14,10 +14,7 @@ header {
     padding-bottom: 40px; 
   }
   
- .lis{
-    flex-wrap: wrap;
-    display: flex;
- } 
+
 .butoni{
     background-color: black;
 }
