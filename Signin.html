@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-in</title>
+    <link rel="stylesheet" href="Signin.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const emailInput = document.getElementById("email");
+
+        emailInput.setAttribute("placeholder", "Enter your email");
+
+        function validateEmail(email) {
+          const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return regex.test(email);
+        }
+
+        const signInForm = document.querySelector(".signin-form");
+
+        password.setAttribute("placeholder", "Enter your password");
+
+        signInForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          if (!validateEmail(email)) {
+            alert("Please enter a valid email address.");
+            return;
+          }
+
+          alert("You are successfully logged in.");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <img src="nike.logo.png" alt="" height="45px" />
+      <nav>
+        <ul>
+          <li><a class="a2" href="Home.html">Home</a></li>
+          <li><a class="a2" href="News.html">News</a></li>
+          <li><a class="a2" href="Contact.html">Contact us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="signin-container">
+      <h1>Sign In</h1>
+      <form class="signin-form">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Sign In</button>
+      </form>
+    </main>
+  </body>
+</html>

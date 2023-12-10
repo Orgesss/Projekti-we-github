@@ -14,6 +14,7 @@ header {
     padding-bottom: 40px; 
   }
   
+
 .butoni{
     background-color: black;
 }
@@ -86,5 +87,131 @@ text-decoration: none;
     color: grey;
 }
 .search-icon {
-    filter: invert(100%); color: black; /* Invert the colors (e.g., black to white, white to black) */
+    filter: invert(100%); color: black; 
   }
+
+  .fotoja1 {
+    width: 100vw;
+    height: 85vh; 
+    background-image: url('Nike.wallpaper2.jpg'); 
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed; 
+    background-size: auto 100%; 
+}
+p{
+    font-size: 20px;
+}
+
+.PjesaEprodukteve{
+    justify-content: space-between;
+    display: flex;
+    background-size: cover;
+    flex-wrap: wrap;
+    
+
+}
+.u1 {
+    flex: 0 1 calc(20% - 10px);
+    padding: 10px;
+    margin: 5px; 
+    display: flex;
+    flex-direction: column;
+    
+}
+.u1 img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    }
+
+.u2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.u2 p {
+    margin: 5px 0;
+}
+
+.u1{
+    
+        filter: brightness(80%) saturate(120%) hue-rotate(200deg);
+    } 
+    .free-shipping {
+        background-color: #f8f8f8; 
+        padding: 40px 0; 
+        text-align: center;
+    }
+    
+    .shipping-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .shipping-content img {
+        width: 150px; 
+        margin-bottom: 15px; 
+    }
+    
+    .shipping-content p {
+        font-size: 18px; 
+        font-weight: bold; 
+    }
+    .footer {
+        background-color: #333; 
+        color: #fff; 
+        padding: 20px;
+
+    }
+    
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .footer-info,
+    .social-links {
+        flex: 1;
+        text-align: right;
+    }
+    
+    .social-links a {
+        margin: 0 10px; 
+    }
+    
+    .payment-methods {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .payment-logos img {
+        max-width: 80px; 
+        height: auto;
+    }
+    
+    
+    .social-links a img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    
+    .social-links a img[src="fb-logo.png"],
+    .social-links a img[src="ig-logo.png"] {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .sponsored-section .sponsor-logos img {
+        width: 100px; 
+        height: auto; 
+       
+    }
+    
+    .sponsor-logos img {
+        max-width: 100px; 
+        margin-right: 20px; 
+    }

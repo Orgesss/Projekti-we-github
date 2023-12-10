@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Clothing and Shoes</title>
+    <link rel="stylesheet" href="Kids.css">
+</head>
+<body>
+    <header>
+        <img src="nike.logo.png" alt="" height="45px">
+        <nav>
+            <ul>
+                <li><a class="a2" href="news.html">News</a></li>
+                <li><a class="a2" href="Contact.html">Contact us</a></li>
+                <li><a class="a2" href="signin.html">Sign in</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="Kids-container">
+        <h1>Kids Clothing </h1>
+        <div class="options">
+            <button onclick="showShirts()">Maice</button>
+            <button onclick="showFleece()">Fleeces</button>
+        </div>
+        <section class="product-section" id="products">
+        
+        </section>
+    </main>
+
+  <script>
+    function showShirts() {
+    const productsContainer = document.getElementById('products');
+    productsContainer.innerHTML = `
+        <div class="product">
+            <img src="kids shirt.jpg" alt="Shirt 1">
+            <h2>Maice 1</h2>
+            <p>Price: $19.99</p>
+        </div>
+        <div class="product">
+            <img src="kids shirt.webp" alt="Shirt 2">
+            <h2>Maice 2</h2>
+            <p>Price: $24.99</p>
+        </div>
+        
+    `;
+}
+
+function showFleece() {
+    const productsContainer = document.getElementById('products');
+    productsContainer.innerHTML = `
+        <div class="product">
+            <img src="kids fleece.webp" alt="Fleece 1">
+            <h2>Fleece 1 1</h2>
+            <p>Price: $29.99</p>
+        </div>
+        <div class="product">
+            <img src="kids fleece.png" alt="Fleece 2">
+            <h2>Fleece 2</h2>
+            <p>Price: $34.99</p>
+        </div>
+        
+    `;
+}
+
+
+  </script>
+</body>
+</html>
+
