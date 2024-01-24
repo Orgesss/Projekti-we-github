@@ -33,6 +33,14 @@
 
     <img class="fotoja1" src="Nike wallpaper.webp" alt="" />
 
+    <div class="slider">
+      <button class="slide-btn slide-btn-left" onclick="slideLeft()"><span class="arrow">&#9664;</span></button>
+      <div class="slider-images-wrapper">
+        <div class="slider-images"></div>
+      </div>
+      <button class="slide-btn slide-btn-right" onclick="slideRight()"><span class="arrow">&#9654;</span></button>
+    </div>
+  
     <p><b>Best Sellers</b></p>
 
     <div class="PjesaEprodukteve">
@@ -127,5 +135,54 @@
         </div>
       </div>
     </footer>
+
+    <script>
+    let slideAmount = 0;
+let isTransitioning = false;
+const imageUrls = [
+'Air Jordan 1 mid (3).jpg',
+      'Air Force 1.webp',
+      'Air Jordan 4 Retro.jpg',
+      'Air Jordan 4 (2).jpg',
+      'Air Jordan 1 mid.webp',
+      'Nike Dunk Low(5).webp',
+      'Nike Air Jordan 3.jpg',
+      'Nike Dunk Pandas.webp'
+    
+];
+
+const sliderImages = document.getElementsByClassName('slider-images')[0];
+const sliderImagesContainer = document.getElementsByClassName('slider-images-wrapper')[0];
+
+imageUrls.forEach((url, index) => {
+    const imageElement = document.createElement('div');
+    imageElement.classList.add('slider-img');
+    imageElement.innerHTML = `<img src="${url}" alt="Image ${index + 1}">`;
+    sliderImages.appendChild(imageElement);
+});
+
+const scrollDistance = 500;
+
+function slideRight() {
+    const newScrollPosition = sliderImagesContainer.scrollLeft + scrollDistance;
+
+    sliderImagesContainer.scrollTo({
+        left: newScrollPosition,
+        behavior: 'smooth'
+    });
+}
+
+function slideLeft() {
+    const newScrollPosition = sliderImagesContainer.scrollLeft - scrollDistance;
+
+    sliderImagesContainer.scrollTo({
+        left: newScrollPosition,
+        behavior: 'smooth'
+    });
+}
+
+
+  </script>
+    
   </body>
 </html>
