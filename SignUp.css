@@ -91,18 +91,3 @@ button {
   color: white;
   cursor: pointer;
 }
-
-.welcome-message {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.welcome-message p {
-  margin: 10px 0;
-}
-
-.welcome-message a {
-  color: #3366cc; 
-  text-decoration: underline;
-  font-weight: bold;
-}
