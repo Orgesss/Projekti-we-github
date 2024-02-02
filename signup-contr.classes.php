@@ -1,19 +1,20 @@
 <?php
+session_start();
 class SignupContr extends Signup {
 
-private $name;
-private $surname;
+private $uid;
+private $pwd;
+private $pwdRepeat;
 private $email;
-private $password;
-private $confirmPassword; 
 
-public function __construct($name, $surname, $email, $password, $confirmPassword) {
-    $this->name = $name;
-    $this->surname = $surname;
+
+public function __construct($uid, $pwd, $pwdRepeat, $email) {
+    $this->uid = $uid;
+    $this->pwd = $pwd;
+    $this->pwdRepeat = $pwdRepeat;
     $this->email = $email;
-    $this->password = $password;
-    $this->confirmPassword = $confirmPassword; 
-}
+  
+} 
 
 public function signupUser() {
     if ($this->emptyInput() == false) {
@@ -21,54 +22,41 @@ public function signupUser() {
         exit();
     }
 
-    if ($this->invalidName() == false) {
-        header("location: ../home.php?error=name");
-        exit();
-    }
-    if ($this->invalidSurname() == false) {
-        header("location: ../home.php?error=surname");
+    if ($this->invalidUid() == false) {
+        header("location: ../home.php?error=username");
         exit();
     }
     if ($this->invalidEmail() == false) {
-        header("location: ../home.php?error=email");
+        header("location: ../home.php?error=Email");
         exit();
     }
     if ($this->pwdMatch() == false) {
-        header("location: ../home.php?error=password");
+        header("location: ../home.php?error=passwordmatch");
         exit();
     }
 
-    if ($this->nameOrEmailTakenCheck() == false) {
-        header("location: ../home.php?error=nameoremailtaken");
+    if ($this->uidTakenCheck() == false) {
+        header("location: ../home.php?error=useroremailtaken");
         exit();
     }
 
-    $this->setUser($this->name, $this->surname, $this->email, $this->password);
+    $this->setUser($this->uid, $this->pwd, $this->email);
 }
 
 private function emptyInput() {
     $result;
-    if (empty($this->name) || empty($this->surname) || empty($this->email) || empty($this->password) || empty($this->confirmPassword)) {
-        $result = false;
+    if (empty($this->uid) || empty($this->pwd) || empty($this->pwdRepeat) || empty($this->email)) {
+        $result = true;  // Return true if any field is empty
     } else {
-        $result = true;
+        $result = false;  // Return false if all fields are filled
     }
     return $result;
 }
 
-private function invalidName() {
-    $result;
-    if (!preg_match("/^[a-zA-Z0-9]*$/", $this->name)) {
-        $result = false;
-    } else {
-        $result = true;
-    }
-    return $result;
-}
 
-private function invalidSurname() {
+private function invalidUid() {
     $result;
-    if (!preg_match("/^[a-zA-Z0-9]*$/", $this->surname)) {
+    if (!preg_match("/^[a-zA-Z0-9]*$/", $this->uid)) {
         $result = false;
     } else {
         $result = true;
@@ -88,17 +76,18 @@ private function invalidEmail() {
 
 private function pwdMatch() {
     $result;
-    if ($this->password !== $this->confirmPassword) {
-        $result = false;
+    if ($this->pwd === $this->pwdRepeat) {
+        $result = false;  
     } else {
-        $result = true;
+        $result = true;   
     }
     return $result;
 }
 
-private function nameOrEmailTakenCheck() {
+
+private function uidTakenCheck() {
     $result;
-    if (!$this->checkUser($this->name, $this->email)) {
+    if (!$this->checkUser($this->uid, $this->email)) {
         $result = false;
     } else {
         $result = true;
