@@ -99,6 +99,27 @@ text-decoration: none;
     background-attachment: fixed; 
     background-size: auto 100%; 
 }
+
+@media screen and (max-width: 800px) {
+    .fotoja1 {
+        height: 30vh;
+    }
+    ul li a{
+        font-size: smaller;
+    }
+
+    .a1,
+    .a2 {
+        font-size: 15px;
+    }
+    .lista1 {
+        top: 50px; 
+    }
+    .Lista1 {
+        top: 20px; 
+      }
+  }
+
 p{
     font-size: 20px;
 }

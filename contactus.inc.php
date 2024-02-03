@@ -2,12 +2,11 @@
 session_start();
 if(isset($_POST["submit"])) 
  {
-  //grabbing the data
+
   $name = $_POST["name"];
   $email = $_POST["email"];
   $message = $_POST["message"];
 
-  // instantiate ContactUsContr class
   include "dbh.classes.php";
   include "../Projekti-we-github/contactus.classes.php";
   include "../Projekti-we-github/contactus-contr.classes.php";
@@ -15,8 +14,6 @@ if(isset($_POST["submit"]))
   $contactUs = new ContactUsContr($name, $email, $message);
   $contactUs->sendMessage();
 
-  // Check for success or failure and redirect accordingly
-  // TODO: Modify the redirection based on your requirements
   header("location: home.php?messagewassent=true");
  }
 ?>
@@ -35,9 +32,9 @@ if(isset($_POST["submit"]))
         <img src="nike.logo.png" alt="" height="45px">
         <nav>
             <ul>
-                <li><a href="Home.html">Home</a></li>
+                <li><a href="Home.php">Home</a></li>
                 <li><a href="News.html">News</a></li>
-                <li><a href="Signin.html">Sign in</a></li>
+                <li><a href="login.inc.php">Sign in</a></li>
             </ul>
         </nav>
     </header>

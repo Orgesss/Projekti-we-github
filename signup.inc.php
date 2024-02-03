@@ -1,20 +1,20 @@
 <?php
+session_start();
 if(isset($_POST["submit"])) 
  {
   //grabbing the data
-  $name = $_POST["name"];
-  $surname= $_POST["surname"];
-  $email= $_POST["email"];
-  $password= $_POST["password"];
-  $confirmPassword= $_POST["confirmPassword"];
+  $uid = $_POST["uid"];
+  $pwd = $_POST["pwd"];
+  $pwdRepeat = $_POST["pwdRepeat"];
+  $email = $_POST["email"];
 //instantiate SignupContr class
-include "../Projekti-we-github/dbh.classes.php";
+include "dbh.classes.php";
 include "../Projekti-we-github/signup.classes.php";
 include "../Projekti-we-github/signup-contr.classes.php";
- $signup = new SignupContr($name, $surname, $email, $password, $confirmPassword);
+ $signup = new SignupContr($uid, $pwd, $pwdRepeat, $email);
 $signup->signupUser();
 
-
+///kontrollo------------------------
 header("location: login.inc.php?signupsuccess=true");
 
  }
@@ -35,29 +35,27 @@ header("location: login.inc.php?signupsuccess=true");
       <img src="nike.logo.png" alt="" height="45px" />
       <nav>
         <ul>
-          <li><a class="a2" href="Home.html">Home</a></li>
+          <li><a class="a2" href="Home.php">Home</a></li>
           <li><a class="a2" href="News.html">News</a></li>
-          <li><a class="a2" href="Contact.html">Contact us</a></li>
+          <li><a class="a2" href="Contactus.inc.php">Contact us</a></li>
         </ul>
       </nav>
     </header>
     <main class="signup-container">
       <h1>Sign Up</h1>
       <form class="signup-form"  method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required />
   
-        <label for="surname">Surname:</label>
-        <input type="text" id="surname" name="surname" placeholder="Enter your Surname" required />
-  
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+        <label for="surname">Username:</label>
+        <input type="text" name="uid" placeholder="Username" required />
   
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+        <input type="password"  name="pwd" placeholder="Enter your password" required />
   
         <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required />
+        <input type="password"  name="pwdrepeat" placeholder="Confirm your password" required />
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" placeholder="Enter your email" required />
   
         <button type="submit" name= "submit">Sign Up</button>
       </form>

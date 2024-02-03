@@ -3,7 +3,7 @@ session_start();
 class Signup extends Dbh {
 
     protected function setUser($uid, $pwd, $email){
-        $stmt = $this->connect()->prepare('INSERT INTO users (users_uid, users_pwd, users_email) VALUES (?, ?, ?);');
+        $stmt = $this->connect()->prepare('INSERT INTO users (users_uid, users_pwd, users_email, is_admin) VALUES (?, ?, ?, false);');
    
         $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
@@ -11,6 +11,7 @@ class Signup extends Dbh {
        $stmt = null;
        header("location: ../home.php?error=stmtfailed");
    exit();
+   
     }
 
         $stmt=null;

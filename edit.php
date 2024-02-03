@@ -20,7 +20,7 @@ if ($myId !== null) {
               </script>";
     }
 } else {
-    // Ndërtoni një përgjigje për rastin kur 'id' nuk është e caktuar
+   
     echo "<p>Id nuk është e caktuar ose është bosh.</p>";
 }
 ?>

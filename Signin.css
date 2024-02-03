@@ -51,8 +51,19 @@ main.signin-container {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.signin-form {
+.login-form {
   margin-top: 20px;
+}
+
+table {
+  width: 50%; 
+  margin: 0 auto; 
+  border-collapse: collapse;
+  border: 2px solid #333; 
+}
+
+td {
+  padding: 10px;
 }
 
 label {
@@ -60,22 +71,8 @@ label {
   margin-bottom: 5px;
 }
 
-input[type="email"],
+input[type="text"],
 input[type="password"] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-}
-
-
-input[type="text"],
-input[type="text"],
-input[type="password"],
-#name,
-#surname,
-#confirmPassword {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
@@ -102,7 +99,7 @@ button {
 }
 
 .welcome-message a {
-  color: #3366cc; 
+  color: #3366cc;
   text-decoration: underline;
   font-weight: bold;
 }

@@ -46,9 +46,9 @@ public function signupUser() {
 private function emptyInput() {
     $result;
     if (empty($this->uid) || empty($this->pwd) || empty($this->pwdRepeat) || empty($this->email)) {
-        $result = true;  // Return true if any field is empty
+        $result = true;  
     } else {
-        $result = false;  // Return false if all fields are filled
+        $result = false;  
     }
     return $result;
 }

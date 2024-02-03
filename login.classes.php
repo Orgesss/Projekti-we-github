@@ -37,6 +37,7 @@ if(!$stmt->execute(array($uid, $uid, $pwd))){
  session_start();
  $_SESSION["userid"] = $user[0]["users_id"];
  $_SESSION["useruid"] = $user[0]["users_uid"];
+ $_SESSION["is_admin"] = $user[0]["is_admin"];
  $stmt=null;
 }
         
