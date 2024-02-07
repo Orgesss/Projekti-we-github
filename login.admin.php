@@ -13,7 +13,7 @@ class AdminDashboard
         }
     }
 
-    public function fetchContactUsData()
+    public function fetchuser()
     {
         $sql = "SELECT * FROM users";
         $result = mysqli_query($this->data, $sql);
@@ -24,26 +24,27 @@ class AdminDashboard
 
         return $result;
     }
-
-    public function deleteContactUsData($id)
+    public function deleteusers($users_id)
     {
-        $sql = "DELETE FROM users WHERE id = $id";
-        $result = mysqli_query($this->data, $sql);
-
-        if ($result === false) {
-            die("Error in SQL query: " . mysqli_error($this->data));
+        $query = "DELETE FROM users WHERE users_id = ?";
+        $stmt = $this->data->prepare($query);
+    
+        $stmt->bind_param('i', $users_id); // 'i' represents integer type
+        $stmt->execute();
+    
+        if ($stmt->affected_rows > 0) {
+            header("location: login.admin.php?deleteSuccessful=true");
+        } else {
+            header("location: login.admin.php?error=deleteFailed");
         }
-
-        return $result;
+    
+        $stmt->close();
+    }
+    
     }
 
-    public function closeConnection()
-    {
-        mysqli_close($this->data);
-    }
-}
 
-
+// Replace these values with your database details
 $host = "localhost";
 $user = "root";
 $password = "";
@@ -176,7 +177,7 @@ $adminDashboard = new AdminDashboard($host, $user, $password, $db);
         <h1>Applied for Admission</h1>
 
         <?php
-        $result = $adminDashboard->fetchContactUsData();
+        $result = $adminDashboard->fetchuser();
 
         if ($result->num_rows > 0) {
             ?>
@@ -186,6 +187,7 @@ $adminDashboard = new AdminDashboard($host, $user, $password, $db);
                     <th style="padding: 20px; font-size: 15px;">Username</th>
                     <th style="padding: 20px; font-size: 15px;">password</th>
                     <th style="padding: 20px; font-size: 15px;">email</th>
+                    <th style="padding: 20px; font-size: 15px;">Delete</th>
                 </tr>
                 <?php
                 while ($info = $result->fetch_assoc()) {
@@ -195,9 +197,10 @@ $adminDashboard = new AdminDashboard($host, $user, $password, $db);
                         <td style="padding: 20px;"><?php echo $info['users_uid']; ?></td>
                         <td style="padding: 20px;"><?php echo $info['users_pwd']; ?></td>
                         <td style="padding: 20px;"><?php echo $info['users_email']; ?></td>
-                            <?php echo "<a onclick=\"javascript:return confirm('Are you sure you wanna delete this'); \" 
-                             href='delete.php?student_id={$info['id']}'>Delete</a>"; ?>
-                        </td>
+                        <td style="padding: 20px;">
+    <a href="delete.login.php?id=<?php echo $info['users_id']; ?>">Delete</a>
+</td>
+
                     </tr>
                     <?php
                 }
@@ -208,7 +211,7 @@ $adminDashboard = new AdminDashboard($host, $user, $password, $db);
             echo "No records found.";
         }
 
-        $adminDashboard->closeConnection();
+        
         ?>
     </div>
 </body>

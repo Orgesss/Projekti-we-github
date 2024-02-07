@@ -1,5 +1,5 @@
 <?php
-require_once('contactus.admin.php');
+require_once('men.admin.php');  
 include('dbh.classes.php');
 
 $host = "localhost";
@@ -9,10 +9,10 @@ $db = "dyqani sportiv";
 
 $adminDashboard = new AdminDashboard($host, $user, $password, $db);
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $adminDashboard->deleteMesazhin($id);
+if (isset($_GET['ID'])) {
+    $ID = $_GET['ID'];
 
-    header("location: contactus.admin.php");
+    $adminDashboard->deleteMen($ID);
+    header("location: men.admin.php");
 }
 ?>

@@ -24,24 +24,25 @@ class AdminDashboard
 
         return $result;
     }
-
-    public function deleteContactUsData($id)
+    public function deleteMesazhin($id)
     {
-        $sql = "DELETE FROM contact_data WHERE id = $id";
-        $result = mysqli_query($this->data, $sql);
-
-        if ($result === false) {
-            die("Error in SQL query: " . mysqli_error($this->data));
+        $query = "DELETE FROM contact_data WHERE id = ?";
+        $stmt = $this->data->prepare($query);
+    
+        $stmt->bind_param('i', $id); // 'i' represents integer type
+        $stmt->execute();
+    
+        if ($stmt->affected_rows > 0) {
+            header("location: contactus.admin.php?deleteSuccessful=true");
+        } else {
+            header("location: contactus.admin.php?error=deleteFailed");
         }
-
-        return $result;
+    
+        $stmt->close();
+    }
+    
     }
 
-    public function closeConnection()
-    {
-        mysqli_close($this->data);
-    }
-}
 
 // Replace these values with your database details
 $host = "localhost";
@@ -192,14 +193,14 @@ $adminDashboard = new AdminDashboard($host, $user, $password, $db);
                 while ($info = $result->fetch_assoc()) {
                     ?>
                     <tr>
-                        <td style="padding: 20px;"><?php echo $info['name']; ?></td>
-                        <td style="padding: 20px;"><?php echo $info['email']; ?></td>
-                        <td style="padding: 20px;"><?php echo $info['message']; ?></td>
-                        <td style="padding: 20px;color:black;">
-                            <?php echo "<a onclick=\"javascript:return confirm('Are you sure you wanna delete this'); \" 
-                             href='delete.php?student_id={$info['id']}'>Delete</a>"; ?>
-                        </td>
-                    </tr>
+    <td style="padding: 20px;"><?php echo $info['name']; ?></td>
+    <td style="padding: 20px;"><?php echo $info['email']; ?></td>
+    <td style="padding: 20px;"><?php echo $info['message']; ?></td>
+    <td style="padding: 20px;color:black;">
+        <a href="delete.php?id=<?php echo $info['id']; ?>">Delete</a>
+    </td>
+</tr>
+
                     <?php
                 }
                 ?>
@@ -209,7 +210,6 @@ $adminDashboard = new AdminDashboard($host, $user, $password, $db);
             echo "No records found.";
         }
 
-        $adminDashboard->closeConnection();
         ?>
     </div>
 </body>

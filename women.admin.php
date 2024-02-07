@@ -13,7 +13,7 @@ class AdminDashboard
         }
     }
 
-    public function fetchContactUsData()
+    public function fetchwomen()
     {
         $sql = "SELECT * FROM women";
         $result = mysqli_query($this->data, $sql);
@@ -24,26 +24,31 @@ class AdminDashboard
 
         return $result;
     }
-
-    public function deleteContactUsData($id)
+    public function deletewomen($ID)
     {
-        $sql = "DELETE FROM women WHERE id = $id";
-        $result = mysqli_query($this->data, $sql);
-
-        if ($result === false) {
-            die("Error in SQL query: " . mysqli_error($this->data));
+        $query = "DELETE FROM women WHERE ID = ?";
+        $stmt = $this->data->prepare($query);
+    
+        $stmt->bind_param('i', $ID); 
+        $stmt->execute();
+    
+        if ($stmt->affected_rows > 0) {
+            header("location: women.admin.php?deleteSuccessful=true");
+        } else {
+            header("location: women.admin.php?error=deleteFailed");
         }
-
-        return $result;
+    
+        $stmt->close();
     }
-
     public function closeConnection()
     {
         mysqli_close($this->data);
     }
-}
+    
+    }
 
 
+// Replace these values with your database details
 $host = "localhost";
 $user = "root";
 $password = "";
@@ -178,7 +183,7 @@ $adminDashboard = new AdminDashboard($host, $user, $password, $db);
         <h1>Applied for Admission</h1>
 
         <?php
-        $result = $adminDashboard->fetchContactUsData();
+        $result = $adminDashboard->fetchwomen();
 
         if ($result->num_rows > 0) {
             ?>
@@ -187,7 +192,6 @@ $adminDashboard = new AdminDashboard($host, $user, $password, $db);
                     <th style="padding: 20px; font-size: 15px;">Emri</th>
                     <th style="padding: 20px; font-size: 15px;">Cmimi</th>
                     <th style="padding: 20px; font-size: 15px;">Fotoja</th>
-                    <th style="padding: 20px; font-size: 15px;">Edit</th> 
                     <th style="padding: 20px; font-size: 15px;">Delete</th>
                 </tr>
                 <?php
@@ -198,9 +202,7 @@ $adminDashboard = new AdminDashboard($host, $user, $password, $db);
                         <td style="padding: 20px;"><?php echo $info['Cmimi']; ?></td>
                         <td style="padding: 20px;"><img src="<?php echo $info['Fotoja']; ?>"style="width:100px;"></td>
                         <td style="padding: 20px;color:black;">
-                        <a href='edit.php?id=<?php echo $info['id']; ?>'>Edit</a>
-                            <?php echo "<a onclick=\"javascript:return confirm('Are you sure you wanna delete this'); \" 
-                             href='delete.php?student_id={$info['id']}'>Delete</a>"; ?>
+                        <a href="delete.women.php?ID=<?php echo $info['ID']; ?>">Delete</a>
                         </td>
                     </tr>
                     <?php
