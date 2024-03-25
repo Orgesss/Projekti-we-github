@@ -1,10 +1,19 @@
+<?php
+session_start();
+include "dbh.classes.php";
+if ($_SESSION['is_admin'] == 1){
+  header("Location: dashboard.php");
+  exit();
+   }
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dyqani Sportiv</title>
-    <link rel="stylesheet" href="Home.css" />
+   <link rel="stylesheet" href="Home.css">
   </head>
   <body>
     <header>
@@ -14,12 +23,13 @@
         <li><a class="a1" href="Men.html">Men</a></li>
         <li><a class="a1" href="Women.html">Women</a></li>
         <li><a class="a1" href="Kids.html">Kids</a></li>
+        <li><a class="a2" href="login.inc.php">Sign Out</a></li>
       </ul>
 
       <ul>
         <li><a class="a2" href="news.html">News</a></li>
-        <li><a class="a2" href="Contact.html">Contact us</a></li>
-        <li><a class="a2" href="Signin.html">Sign in</a></li>
+        <li><a class="a2" href="Contactus.inc.php">Contact us</a></li>
+        <li><a class="a2" href="login.inc.php">Log-in</a></li>
       </ul>
     </header>
     <p></p>
